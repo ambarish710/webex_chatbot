@@ -158,7 +158,7 @@ class ChatBotUtility:
         self.logger.info("Initializing pre-requisites for fileserver...")
         self.fileserver_wrapper = FileServerWrapper()
         self.logger.info("Branch: {}".format(branch))
-        _file_server_url = 'http://maglev-fileserver.cisco.com/artifacts/daily-release/iso-release/'
+        _file_server_url = 'URL'
         self.get_stable_build_url = _file_server_url + 'stable/{}/'.format(branch)
         self.get_current_build_url = _file_server_url + 'daily/{}/'.format(branch)
 
@@ -303,14 +303,14 @@ class ChatBotUtility:
 
 
     def execute_commands_on_cluster(self ,hostname, ssh_username, ssh_password,
-                                    maglev_username, maglev_password, person_id):
+                                    cluster_username, cluster_password, person_id):
         """
             Execute commands on the cluster
             :param hostname: Hostname
             :param ssh_username: SSH Username
             :param ssh_password: SSH Password
-            :param maglev_username: maglev username
-            :param maglev_password: maglev password
+            :param cluster_username: cluster username
+            :param cluster_password: cluster password
             :param person_id: Webex person ID
         """
         # Connecting to the given cluster
@@ -324,13 +324,6 @@ class ChatBotUtility:
             for command_set in self.all_commands:
                 self.logger.info("Command Set: {}".format(command_set))
                 if self.all_commands[command_set]:
-                    if command_set == "maglev_commands":
-                        text += "command: {}\n".format(command)
-                        command = "maglev login -u {} -p {} -c {}:443 -k".format(maglev_username, maglev_password, hostname)
-                        stdin, stdout, stderr = self.ssh.exec_command(command, timeout=20)
-                        # Sending command output to the individual
-                        self.formulating_command_output(stdout, stderr, person_id, text)
-                        text = ""
                     for command in self.all_commands[command_set]:
                         text += "command: {}\n".format(command)
                         self.logger.info("Executing " + str(text))
@@ -365,18 +358,18 @@ class ChatBotUtility:
             hostname = entity[1]
             ssh_username = entity[2]
             ssh_password = entity[3]
-            maglev_username = entity[4]
-            maglev_password = entity[5]
+            cluster_username = entity[4]
+            cluster_password = entity[5]
             self.logger.info("IP: {}".format(hostname))
             self.logger.info("SSH username: {}".format(ssh_username))
             self.logger.info("SSH password: {}".format(ssh_password))
-            self.logger.info("maglev username: {}".format(maglev_username))
-            self.logger.info("maglev password: {}".format(maglev_password))
+            self.logger.info("cluster username: {}".format(cluster_username))
+            self.logger.info("cluster password: {}".format(cluster_password))
             self.intialize_tshoot_prerequisites()
             tshoot_process = multiprocessing.Process(target=self.execute_commands_on_cluster,
                                          args=(hostname, ssh_username,
-                                               ssh_password, maglev_username,
-                                               maglev_password, person_id))
+                                               ssh_password, cluster_username,
+                                               cluster_password, person_id))
             tshoot_process.start()
             tshoot_process.join()
         else:
