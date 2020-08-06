@@ -54,7 +54,7 @@ General Information --
                 - If the user input is "Troubleshoot" a given cluster
                     - Then it runs a set of troubleshooting commands on a given cluster
                     - And provides report in personal chat
-                    - @BUG_NOTIFIER_BOT Troubleshoot <HOSTNAME> <SSH_USERNAME> <SSH_PASSWORD> <MAGLEV_USERNAME> <MAGLEV_PASSWORD>
+                    - @BUG_NOTIFIER_BOT Troubleshoot <HOSTNAME> <SSH_USERNAME> <SSH_PASSWORD> <CLUSTER_USERNAME> <CLUSTER_PASSWORD>
             - Stores the last served request timestamp in "tmp/metadata.yaml" (Readonly)
 
 
