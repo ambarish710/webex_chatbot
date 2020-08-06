@@ -1,0 +1,3 @@
+keyword_jira_query_mappings:
+  Valar Morghulis: Valar Dohaeris!!!
+  Open Must Fix Bugs: type = Bug AND labels = must-fix AND status = Open

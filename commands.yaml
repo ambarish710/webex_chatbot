@@ -1,0 +1,12 @@
+basic_commands:
+  - 'uname -a'
+  - 'uptime'
+  - 'date'
+
+kube_commands:
+  - 'kubectl get nodes'
+  - 'runonce status'
+  - 'kubectl describe nodes | grep -i -E "(taint|hostname)"'
+
+etcd_command:
+  - 'etcdctl cluster-health'

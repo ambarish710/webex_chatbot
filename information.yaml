@@ -1,0 +1,37 @@
+general_details:
+  chat_bot_read_time_interval: 10
+  periodic_notifier_interval: 6                                                             # Delay in hours
+  proxy: false
+  http_proxy: "PROXY"
+  https_proxy: "PROXY"
+
+
+jira_details:
+  jira_user: "JIRA_USER"
+  jira_password: "JIRA_PASSWORD"
+  jira_server_url: "JIRA_SERVER_URL"
+  fixed_jira_query: "FIXED_JIRA_QUERY"
+  string_header_with_response: "TEXT"
+
+
+cdet_details:
+  cdet_user: "CDET_USER"
+  cdet_password: "CDET_PASSWORD"
+  auth_token: "TOKEN"
+  cdet_url: "CDET_BACKEND_URL"
+  fixed_cdet_query: "CDET_QUERY"
+  string_header_with_response: "TEXT"
+
+
+webex_teams_details:
+  webex_url: "WEBEX_URL"
+  webex_room_id: "WEBEX_ROOM_ID"
+  # Webex Bot details
+  auth_token: "WEBEX_BOT_TOKEN"
+  webex_bot_name: "WEBEX_BOT_NAME"
+
+
+qdna_details:
+  cluster_ip: "IP"
+  username: "username"
+  password: "password"
